@@ -1,0 +1,9 @@
+repositories:
+  infrabot-sdk:
+    type: git
+    url: https://github.com/YaolinDong/infrabot-sdk.git
+    version: v0.1.2
+  infrabot-description:
+    type: git
+    url: https://github.com/YaolinDong/infrabot-description.git
+    version: v0.1.0

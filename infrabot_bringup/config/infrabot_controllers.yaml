@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 Yaolin Dong
+# The controller runs its own 1 kHz joint loop; the SDK streams the newest
+# command at 1 kHz. 500 Hz here is enough for trajectories and leaves margin
+# on a non-real-time kernel.
+controller_manager:
+  ros__parameters:
+    update_rate: 500
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints: [Joint_1, Joint_2, Joint_3, Joint_4, Joint_5, Joint_6, Joint_7]
+    command_interfaces: [position]
+    state_interfaces: [position, velocity]
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.05
+      goal_time: 0.5
+
+forward_position_controller:
+  ros__parameters:
+    joints: [Joint_1, Joint_2, Joint_3, Joint_4, Joint_5, Joint_6, Joint_7]
+    interface_name: position

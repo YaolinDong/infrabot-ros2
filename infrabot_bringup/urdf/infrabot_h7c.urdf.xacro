@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Copyright (c) 2026 Yaolin Dong -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="infrabot_h7c">
+  <xacro:arg name="robot_ip" default="192.168.0.50"/>
+  <xacro:arg name="use_mock_hardware" default="false"/>
+
+  <xacro:include filename="$(find infrabot_description)/urdf/infrabot_h7c.urdf"/>
+  <xacro:include filename="$(find infrabot_bringup)/urdf/infrabot_h7c.ros2_control.xacro"/>
+
+  <xacro:infrabot_h7c_ros2_control name="InfrabotH7C" robot_ip="$(arg robot_ip)"
+                                   use_mock_hardware="$(arg use_mock_hardware)"/>
+</robot>

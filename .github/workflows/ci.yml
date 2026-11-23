@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: Apache-2.0
+name: Build and test
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  jazzy:
+    runs-on: ubuntu-24.04
+    container: ros:jazzy-ros-base
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src/infrabot-ros2
+      - name: Dependencies
+        shell: bash
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends python3-vcstool libssl-dev
+          vcs import src < src/infrabot-ros2/infrabot.repos
+          rosdep update
+          rosdep install --from-paths src --ignore-src -y --skip-keys infrabot_sdk
+      - name: Build
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release -DINFRABOT_BUILD_GUI=OFF
+      - name: Test
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          source install/setup.bash
+          colcon test --packages-select infrabot_hardware infrabot_bringup
+          colcon test-result --verbose

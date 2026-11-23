@@ -1,0 +1,7 @@
+<library path="infrabot_hardware">
+  <class name="infrabot_hardware/InfrabotSystem"
+         type="infrabot_hardware::InfrabotSystem"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>ros2_control system for the InfraBot H7C arm, J1-J7, over the InfraBot SDK.</description>
+  </class>
+</library>

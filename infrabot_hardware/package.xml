@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>infrabot_hardware</name>
+  <version>0.1.0</version>
+  <description>ros2_control hardware interface for the InfraBot H7C arm.</description>
+  <maintainer email="dong1505lin@gmail.com">YaolinDong</maintainer>
+  <author email="dong1505lin@gmail.com">YaolinDong</author>
+  <license file="../LICENSE">Apache-2.0</license>
+  <url type="repository">https://github.com/YaolinDong/infrabot-ros2</url>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <!-- Built from source in the workspace (infrabot.repos); not a rosdep key. -->
+  <depend>infrabot_sdk</depend>
+
+  <test_depend>ament_cmake_gmock</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
