@@ -66,7 +66,7 @@ The driver never disables the drives. The controller stops the arm if the stream
 
 ## Compatibility
 
-Firmware 0.1.1 and SDK 0.1.2 with protocol 1.0, on ROS 2 Jazzy and Ubuntu 24.04.
+Firmware 0.1.1 and SDK 0.1.3 with protocol 1.0, on ROS 2 Jazzy and Ubuntu 24.04.
 
 [Apache-2.0](LICENSE) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
