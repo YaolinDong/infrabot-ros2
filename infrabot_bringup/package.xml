@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>infrabot_bringup</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>Launch files, ros2_control URDF and controller configuration for the InfraBot H7C arm.</description>
   <maintainer email="dong1505lin@gmail.com">YaolinDong</maintainer>
   <author email="dong1505lin@gmail.com">YaolinDong</author>
