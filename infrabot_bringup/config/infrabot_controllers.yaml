@@ -1,11 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Yaolin Dong
-# The controller runs its own 1 kHz joint loop; the SDK streams the newest
-# command at 1 kHz. 500 Hz here is enough for trajectories and leaves margin
-# on a non-real-time kernel.
+# The controller manager runs read/update/write at 1 kHz, the rate of the
+# controller's joint loop and of the SDK joint stream. A PREEMPT_RT kernel
+# keeps the cycle steady. A standard kernel also runs 1 kHz with more jitter;
+# if "Overrun detected" warnings are frequent there, lower update_rate to 500.
 controller_manager:
   ros__parameters:
-    update_rate: 500
+    update_rate: 1000
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
     joint_trajectory_controller:
