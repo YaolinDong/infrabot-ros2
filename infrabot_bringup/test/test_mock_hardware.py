@@ -11,7 +11,7 @@ import pytest
 import rclpy
 from builtin_interfaces.msg import Duration
 from control_msgs.action import FollowJointTrajectory
-from controller_manager_msgs.srv import ListControllers
+from controller_manager_msgs.srv import ListControllers, ListHardwareComponents
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.actions import IncludeLaunchDescription
 from launch_ros.substitutions import FindPackageShare
@@ -59,7 +59,17 @@ class TestMockHardware(unittest.TestCase):
         rclpy.spin_until_future_complete(self.node, future, timeout_sec=5.0)
         return {c.name for c in future.result().controller if c.state == 'active'}
 
+    def hardware_plugins(self):
+        client = self.node.create_client(
+            ListHardwareComponents, '/controller_manager/list_hardware_components')
+        self.assertTrue(client.wait_for_service(timeout_sec=30.0))
+        future = client.call_async(ListHardwareComponents.Request())
+        rclpy.spin_until_future_complete(self.node, future, timeout_sec=5.0)
+        return {c.plugin_name for c in future.result().component}
+
     def test_controllers_and_trajectory(self):
+        # Refuse to send a goal unless the controller manager we reached runs mock hardware.
+        self.assertEqual(self.hardware_plugins(), {'mock_components/GenericSystem'})
         wanted = {'joint_state_broadcaster', 'joint_trajectory_controller'}
         self.assertTrue(self.wait_for(lambda: wanted <= self.active_controllers(), 30.0))
 

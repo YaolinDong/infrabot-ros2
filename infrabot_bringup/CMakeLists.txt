@@ -8,8 +8,11 @@ find_package(ament_cmake REQUIRED)
 install(DIRECTORY config launch urdf DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
+  find_package(ament_cmake_ros REQUIRED)
   find_package(launch_testing_ament_cmake REQUIRED)
-  add_launch_test(test/test_mock_hardware.py TIMEOUT 120)
+  # Run in a free ROS domain (1-100) so the test never reaches a live arm in domain 0.
+  add_launch_test(test/test_mock_hardware.py TIMEOUT 120
+    RUNNER "${ament_cmake_ros_DIR}/run_test_isolated.py")
 endif()
 
 ament_package()
