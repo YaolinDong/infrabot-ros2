@@ -16,7 +16,7 @@ find_package(hardware_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
-find_package(infrabot_sdk 0.1 CONFIG REQUIRED)
+find_package(infrabot_sdk 0.2 CONFIG REQUIRED)
 
 add_library(${PROJECT_NAME} SHARED src/infrabot_system.cpp)
 target_include_directories(${PROJECT_NAME} PUBLIC

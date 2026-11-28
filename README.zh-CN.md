@@ -66,7 +66,7 @@ ros2 action send_goal /joint_trajectory_controller/follow_joint_trajectory contr
 
 ## 版本兼容
 
-固件 0.1.1、SDK 0.1.3，协议 1.0；ROS 2 Jazzy，Ubuntu 24.04。
+基于 SDK 0.2 构建（`infrabot.repos` 固定为 0.2.1，协议 1.1，也能连接协议 1.0 的固件），ROS 2 Jazzy，Ubuntu 24.04。最近一次上机测试：固件 0.1.1、SDK 0.1.3。
 
 [Apache-2.0](LICENSE) · [更新记录](CHANGELOG.md) · [参与贡献](CONTRIBUTING.md)
 

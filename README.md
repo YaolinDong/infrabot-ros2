@@ -66,7 +66,7 @@ The driver never disables the drives. The controller stops the arm if the stream
 
 ## Compatibility
 
-Firmware 0.1.1 and SDK 0.1.3 with protocol 1.0, on ROS 2 Jazzy and Ubuntu 24.04.
+Builds against SDK 0.2 (`infrabot.repos` pins 0.2.1, protocol 1.1; it also connects to protocol 1.0 firmware), on ROS 2 Jazzy and Ubuntu 24.04. Last tested on the arm with firmware 0.1.1 and SDK 0.1.3.
 
 [Apache-2.0](LICENSE) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
